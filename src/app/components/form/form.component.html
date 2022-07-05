@@ -1,0 +1,39 @@
+<img [src]="morbNews" alt="" height="500" id="hp"/>
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <h2>Subscribe to Our Newsletter</h2>
+    <label for="first-name">First Name: </label>
+    <input id="first-name" type="text" formControlName="firstName" placeholder="Example: Mary" required>
+  
+    <label for="last-name">Last Name: </label>
+    <input id="last-name" type="text" formControlName="lastName" placeholder="Example: Sue" required>
+
+    <label for="last-name">Phone: </label>
+    <input id="last-name" type="text" formControlName="phone" placeholder="Example: 123-456-7890" required>
+  
+    <div formArrayName="email">
+      <h2>Email</h2>
+      <button type="button" (click)="addEmail()" style="margin-bottom: 10px;">+ Add another email</button>
+  
+      <div *ngFor="let email of email.controls; let i=index">
+        <!-- The repeated alias template -->
+        <label for="email-{{ i }}" style="margin-right: 10px;">Email:</label>
+        <input id="email-{{ i }}" type="email" [formControlName]="i" style="margin-bottom: 10px;" required>
+      </div>
+    </div>
+    
+    <h2>Address</h2>
+  
+    <label for="street">Street: </label>
+    <input id="street" type="text" formControlName="street" placeholder="Example: 23 Grove St" required>
+
+    <label for="city">City: </label>
+    <input id="city" type="text" formControlName="city" placeholder="Example: Los Santos" required>
+
+    <label for="state">State: </label>
+    <input id="state" type="text" formControlName="state" placeholder="Example: LA" required>
+
+    <label for="zip">Zip Code: </label>
+    <input id="zip"type="text" formControlName="zip" placeholder="Example: 78901" required>
+    <p>Complete the form to enable button.</p>
+    <button type="submit" [disabled]="!profileForm.valid">Submit</button>
+</form>

@@ -1,0 +1,15 @@
+  form {
+    position: absolute;
+    left: 50%;
+
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column; 
+    align-items: left;
+    font-weight: bold;
+  }
+
+  #hp  {
+    float: left;    
+    margin: 50px 500px 50px 15px;
+  }
